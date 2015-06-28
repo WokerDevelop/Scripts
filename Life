@@ -1,0 +1,71 @@
+using UnityEngine;
+using System.Collections;
+
+public class Life : MonoBehaviour {
+
+
+	public float L;
+	public float Wheater;
+	
+
+	public Material Natural;
+	public Material Dailed;
+	public Material Cold;
+	public Material Hot;
+	public Material Grief;
+	public Material Bloodless;
+	public Material Break;
+
+
+	private bool NaturalC = false;
+	private bool DailedC = false;
+	private bool ColdC = false;
+	private bool HotC = false;
+	private bool GriefC = false;
+	private bool BloodlessC = false;
+	private bool BreakC = false;
+	
+
+	public bool Sore = false;
+	
+
+	void Start () {
+	
+		gameObject.GetComponent<Renderer> ().material = Natural;
+
+	}
+
+
+
+	void Update (){
+
+
+		if (L > 100)
+			L = 100;
+
+
+		if (L < 0)
+			L = 0;
+			
+		//Desangracion
+		if (Sore == true)
+			L -= 1 *1* Time.deltaTime;
+
+		//Dañado
+		if (L <= 20)
+			gameObject.GetComponent<Renderer> ().material = Dailed;
+			
+
+		//Frio
+		if (Wheater < 16)
+			gameObject.GetComponent<Renderer> ().material = Cold;
+			
+
+		//Caliente
+		if (Wheater > 30)
+			gameObject.GetComponent<Renderer> ().material = Hot;
+			
+	
+		}
+
+}
